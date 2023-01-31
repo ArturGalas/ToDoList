@@ -1,0 +1,22 @@
+﻿@model ToDo_List_Infrastructure.DTO.UserDTO
+<header>
+    <link rel="stylesheet" href="~/css/Task.css" asp-append-version="true" />
+</header>
+<p class="PageHader">Twoje wszystkie zadania użytkowniku @Model.name</p>
+@if (Model.tasks.Count() > 0)
+{
+    @foreach(var oneTask in Model.tasks)
+    {
+        <div class="ItemBox">
+            <div class="BoxElement">
+                <p class="TitleText">@oneTask.title</p>
+                <a asp-action="" asp-controller=""><div class="DoneBtn btn">Zakończ</div></a>
+                <a asp-controller="Task" asp-action="Details" asp-route-id="@oneTask.title"><div class="ViewBtn btn">Podgląd</div></a>
+                <a asp-action="" asp-controller=""><div class="DeleteBtn btn">Usuń</div></a>
+            </div>
+        </div>
+    }
+}else{
+    <p class="EmptyTaskList">Niestety nie posiadasz żadnych zadań.</p>
+    <p>Możesz je dodać przez panel boczny.</p>
+}

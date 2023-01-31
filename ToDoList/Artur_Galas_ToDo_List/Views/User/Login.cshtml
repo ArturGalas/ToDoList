@@ -1,0 +1,28 @@
+﻿@model ToDo_List_Infrastructure.Commands.User.Login
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+@if (ViewBag.Error != null)
+{
+        <div class="Error">
+        @ViewBag.Error
+        </div>
+}
+@using(Html.BeginForm("Login","User",FormMethod.Post)){
+    <div class="UserRegister">
+    <div class="BoxLbl">
+        <label>Email</label>
+        <input type="email" asp-for="@Model.username" id="UserBox"/>
+    </div>
+    <div class="BoxLbl">
+        <label>Hasło</label>
+        <input type="password" asp-for="@Model.password" id="UserBox"/>
+    </div>   
+    <div class="UserBtn">
+            <input type="submit" id="btn" value="Zaloguj"/>
+    </div>
+     </div>
+}
+</html>

@@ -1,0 +1,17 @@
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\bin\Debug\net6.0\ToDo_List_Infrastructure.deps.json
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\bin\Debug\net6.0\ToDo_List_Infrastructure.runtimeconfig.json
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\bin\Debug\net6.0\ToDo_List_Infrastructure.dll
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\bin\Debug\net6.0\ToDo_List_Infrastructure.pdb
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\bin\Debug\net6.0\ToDo_List_Core.dll
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\bin\Debug\net6.0\ToDo_List_Core.pdb
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.csproj.AssemblyReference.cache
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.AssemblyInfoInputs.cache
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.AssemblyInfo.cs
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.csproj.CopyComplete
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.dll
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\refint\ToDo_List_Infrastructure.dll
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.pdb
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ToDo_List_Infrastructure.genruntimeconfig.cache
+C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Infrastructure\obj\Debug\net6.0\ref\ToDo_List_Infrastructure.dll

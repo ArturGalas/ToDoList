@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Artur_Galas_ToDo_List</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Artur_Galas_ToDo_List.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="Block">
+    <div class="LeftBlock">
+
+
+            @if (User?.Identity?.IsAuthenticated == false)
+            {
+                   <a asp-area="" asp-controller="User" asp-action="Index">
+                        <div class="ElementOfBlock">
+                            <p class="textinBlock">ToDoList</p>
+                        </div>
+                   </a>
+                    <a class="textinBlock" asp-area="" asp-controller="User" asp-action="Login">
+                        <div class="ElementOfBlock">
+                            <p class="textinBlock">Zaloguj</p>
+                        </div>
+                    </a>
+                    <a class="textinBlock" asp-area="" asp-controller="User" asp-action="Register">
+                        <div class="ElementOfBlock">
+                            <p class="textinBlock">Rejestracja</p>
+                        </div>
+                    </a>
+                        <a class="test" asp-area="" asp-controller="Task" asp-action="Index">
+                       <div class="ElementOfBlock">
+                            <p class="textinBlock">Lista zadań</p>
+                        </div>
+                    </a>
+            }
+            else
+            {
+                <a class="test" asp-area="" asp-controller="Task" asp-action="Index">
+                   <div class="ElementOfBlock">
+                        <p class="textinBlock">Lista zadań</p>
+                    </div>
+                </a>
+                <a class="test" asp-area="" asp-controller="User" asp-action="Index">
+                   <div class="ElementOfBlock">
+                        <p class="textinBlock">Dodaj zadanie</p>
+                    </div>
+                </a>
+                <a class="test" asp-area="" asp-controller="User" asp-action="Index">
+                    <div class="ElementOfBlock">
+                        <p class="textinBlock">Szczegóły konta</p>
+                    </div>
+                </a>
+                <a class="test" asp-area="" asp-controller="User" asp-action="Logout">
+                    <div class="ElementOfBlock">
+                        <p class="textinBlock">Wyloguj</p>
+                    </div>
+                </a>
+            }
+    </div>
+    </div>
+    <div class="container" style="margin: 50px auto">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>

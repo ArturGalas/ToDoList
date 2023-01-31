@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Artur_Galas_ToDo_List.props" />
+</Project>

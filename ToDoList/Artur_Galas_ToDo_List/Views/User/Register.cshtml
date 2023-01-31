@@ -1,0 +1,36 @@
+﻿@model ToDo_List_Infrastructure.Commands.CreateUser
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+@if(ViewBag.Error != null)
+{
+    <div class="Error">
+            @ViewBag.Error
+    </div>
+}
+@using(Html.BeginForm("Register","User",FormMethod.Post)){
+<div class="UserRegister">
+    <div class="BoxLbl">
+        <label>Nazwa użytkownika</label>
+        <input type="text" asp-for="@Model.Name" id="UserBox"/>
+    </div>
+    <div class="BoxLbl">
+        <label>Email</label>
+        <input type="email" asp-for="@Model.Email" id="UserBox"/>
+    </div>
+    <div class="BoxLbl">
+        <label>Hasło</label>
+        <input type="password" asp-for="@Model.Password" id="UserBox"/>
+    </div>
+    <div class="BoxLbl">
+        <list>Rola</list>
+        <select asp-for="@Model.role" asp-items="Html.GetEnumSelectList<ToDo_List_Core.Models.Role>()"></select>
+    </div>
+    <div class="UserBtn">
+            <input type="submit" id="btn" value="Zapisz"/>
+    </div>
+</div>
+}
+</html>

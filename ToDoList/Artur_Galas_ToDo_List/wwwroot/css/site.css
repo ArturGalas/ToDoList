@@ -1,0 +1,75 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #4f99a8;
+}
+.UserRegister{
+    margin: 30px auto;
+    text-align: center;
+    display: block;
+    justify-content: left;
+    width: 500px;
+    height: 800px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-family: 'Times New Roman';
+}
+#UserBox{
+    color: white;
+    background-color: gray;
+    width: 400px;
+    margin: 5px auto;
+    text-align: center;
+    justify-content:center;
+    display: inline-block;
+    font-size: 20px;
+}
+.BoxLbl{
+    text-align: center;
+    width: 500px;
+    height: 100px;
+    justify-content: center;
+    display:inline-grid;
+}
+.UserBtn{
+    margin: 25px;
+    justify-content:center;
+}
+#btn{
+    background-color: lightgreen;
+    border: none;
+    height: 50px;
+    width: 400px;
+    color: black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+}
+#btn:hover{
+    background-color:grey;
+    color:white;
+}
+#btn:active{
+    background-color:lightgreen;
+    color:black;
+}
+.Error{
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: bolder;
+}

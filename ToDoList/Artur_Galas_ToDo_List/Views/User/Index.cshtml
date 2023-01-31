@@ -1,0 +1,21 @@
+﻿@model ToDo_List_Infrastructure.DTO.AccountDTO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Artur_Galas_ToDo_List</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Artur_Galas_ToDo_List.styles.css" asp-append-version="true" />
+</head>
+@if(Model == null)
+{
+        <p>Jesteś nie zalogowany</p>
+        <input class="btn" type="button"  onclick="location.href='@Url.Action(action:"Login",controller:"User")'" value="Zaloguj" \>
+}else{
+<p>Test</p>
+<text>Witaj użytkowniku <h1>@Model.name</h1><br />
+    Twoja rola to @Model.role</text>
+}
+</html>
