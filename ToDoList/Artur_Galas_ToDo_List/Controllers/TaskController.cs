@@ -24,15 +24,6 @@ namespace Artur_Galas_ToDo_List.Controllers
             var guid = User.Identity.Name;
             var user = await _userService.GetAsync(Guid.Parse(guid));
             List<TaskDTO> tasks = new List<TaskDTO>();
-            for (int i = 0; i < 100; i++)
-            {
-                tasks.Add(new TaskDTO()
-                    {
-                    id = new Guid(),
-                    title = "Zadanie " + (i+1).ToString()
-                }
-                );
-            }
             return View(user);
         }
         [HttpGet("Details/{id}")]
@@ -45,6 +36,11 @@ namespace Artur_Galas_ToDo_List.Controllers
                 state = ToDo_List_Core.Models.TaskState.Active,
             };
             return View(ts);
+        }
+        [HttpGet("Create")]
+        public async Task<IActionResult> Create()
+        {
+            return View();
         }
     }
 }

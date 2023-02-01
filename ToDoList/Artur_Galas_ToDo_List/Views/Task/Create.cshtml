@@ -1,0 +1,27 @@
+﻿@model ToDo_List_Infrastructure.Commands.Task.AddTask;
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@{
+    ViewData["Title"]="Dodawanie zadania";
+}
+@{
+    
+    @using (Html.BeginForm("Login", "User", FormMethod.Post)){
+    <div class="UserRegister">
+    <div class="BoxLbl">
+        <label>Tytuł zadania</label>
+        <input type="text" asp-for="@Model.Title" id="TitleBox"/>
+    </div>
+    <div class="BoxLbl">
+        <label>Opis zadania</label>
+        <input type="text" asp-for="@Model.Description" id="DescriptionBox"/>
+    </div>   
+    <div class="BoxLbl">
+    <label>Data zakończenia zadania</label>
+    <input type="date" asp-for="@Model.EndDate" id="DateBox"/>
+    </div>
+    <div class="UserBtn">
+            <input type="submit" id="btn" value="Stwórz zadanie"/>
+    </div>
+     </div>
+    }
+}

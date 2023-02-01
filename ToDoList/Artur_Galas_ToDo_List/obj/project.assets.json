@@ -3621,11 +3621,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\Artur_Galas_ToDo_List\\Artur_Galas_ToDo_List.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\Artur_Galas_ToDo_List\\Artur_Galas_ToDo_List.csproj",
       "projectName": "Artur_Galas_ToDo_List",
-      "projectPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\Artur_Galas_ToDo_List\\Artur_Galas_ToDo_List.csproj",
+      "projectPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\Artur_Galas_ToDo_List\\Artur_Galas_ToDo_List.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\Artur_Galas_ToDo_List\\obj\\",
+      "outputPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\Artur_Galas_ToDo_List\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "F:\\VS\\Shared\\NuGetPackages"
@@ -3647,8 +3647,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\ToDo_List_Infrastructure\\ToDo_List_Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\ToDo_List_Infrastructure\\ToDo_List_Infrastructure.csproj"
+            "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\ToDo_List_Infrastructure\\ToDo_List_Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\ToDo_List_Infrastructure\\ToDo_List_Infrastructure.csproj"
             }
           }
         }

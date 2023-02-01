@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\ToDo_List_Core\\ToDo_List_Core.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\ToDo_List_Core\\ToDo_List_Core.csproj",
       "projectName": "ToDo_List_Core",
-      "projectPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\ToDo_List_Core\\ToDo_List_Core.csproj",
+      "projectPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\ToDo_List_Core\\ToDo_List_Core.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\ToDo_List_Core\\obj\\",
+      "outputPath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\ToDo_List_Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "F:\\VS\\Shared\\NuGetPackages"

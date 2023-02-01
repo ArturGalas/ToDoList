@@ -10,3 +10,15 @@ C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Core\obj\Debug
 C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Core\obj\Debug\net6.0\refint\ToDo_List_Core.dll
 C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.pdb
 C:\Users\PC\Source\Repos\ArturGalas\To_Do_List\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ref\ToDo_List_Core.dll
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\bin\Debug\net6.0\ToDo_List_Core.deps.json
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\bin\Debug\net6.0\ToDo_List_Core.dll
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\bin\Debug\net6.0\ToDo_List_Core.pdb
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.csproj.AssemblyReference.cache
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.AssemblyInfoInputs.cache
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.AssemblyInfo.cs
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.csproj.CoreCompileInputs.cache
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.dll
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\refint\ToDo_List_Core.dll
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ToDo_List_Core.pdb
+C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\ToDo_List_Core\obj\Debug\net6.0\ref\ToDo_List_Core.dll

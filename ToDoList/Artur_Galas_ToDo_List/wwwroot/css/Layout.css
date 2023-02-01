@@ -1,18 +1,20 @@
 ﻿body {
     background-color: #4f99a8;
 }
+
 .textinBlock {
     text-decoration: none;
-    color:white;
     margin: 25px auto;
 }
-.test:hover{
+.test:hover {
     color: gray;
 }
-.Block:hover{
+
+.Block:hover {
     left: 0px;
     transition-duration: 0.5s;
 }
+
 .Block {
     width: 230px;
     height: 115%;
@@ -25,13 +27,17 @@
     font-size: 20px;
     font-family: 'Times New Roman';
 }
-.LeftBlock{
+
+.LeftBlock {
     text-align: center;
     left: 20px;
     color: white;
     height: 100%;
 }
-.ElementOfBlock{
+
+.ElementOfBlock {
+    color: white;
+    margin: 25px auto;
     text-align: center;
     border: 5px solid white;
     justify-content: center;
@@ -39,4 +45,9 @@
     height: 100px;
     margin: 25px auto;
     display: inline-flex;
+}
+.ElementOfBlock:hover {
+    border: 5px solid #4f99a8;
+    background-color: white;
+    color: #4f99a8;
 }

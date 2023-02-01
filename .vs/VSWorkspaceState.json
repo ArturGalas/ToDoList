@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ToDoList",
+    "\\ToDoList\\Artur_Galas_ToDo_List",
+    "\\ToDoList\\Artur_Galas_ToDo_List\\Views",
+    "\\ToDoList\\Artur_Galas_ToDo_List\\Views\\Task"
   ],
+  "SelectedNode": "\\ToDoList\\Artur_Galas_ToDo_List\\Views\\Task\\Details.cshtml",
   "PreviewInSolutionExplorer": false
 }

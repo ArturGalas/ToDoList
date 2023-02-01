@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jzOZnMfDnl3kHy+sBtcgTZsnOvgGHuKv61SM0uAVSlUMvLat6ycSEt1cgJFqL8eDAkwm81Dh8eB/DmfeuCtEVQ==",
+  "dgSpecHash": "GJTTQvQoicZs8LTgdr2m5LveiA60CB3cuc/oIe/CZlnOEJThL+B23CMAHaDexWaBJPoTM1GYetkyY1OkzvllQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\To_Do_List\\ToDoList\\Artur_Galas_ToDo_List\\Artur_Galas_ToDo_List.csproj",
+  "projectFilePath": "C:\\Users\\PC\\Source\\Repos\\ArturGalas\\ToDoList\\ToDoList\\Artur_Galas_ToDo_List\\Artur_Galas_ToDo_List.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
