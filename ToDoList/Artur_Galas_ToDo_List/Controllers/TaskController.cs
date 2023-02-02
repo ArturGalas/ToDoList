@@ -1,30 +1,36 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using ToDo_List_Infrastructure.Commands.Task;
 using ToDo_List_Infrastructure.DTO;
 using ToDo_List_Infrastructure.Services;
 
 namespace Artur_Galas_ToDo_List.Controllers
 {
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
     public class TaskController : ApiControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ITaskService _taskService;
         private readonly UserDTO _user;
         
-        public TaskController(IUserService userservice)
+        public TaskController(IUserService userservice,ITaskService taskService)
         {
+            _taskService = taskService;
             _userService = userservice;
         }
-        [Authorize]
         [HttpGet("Index")]
         public async Task<IActionResult> Index() 
         {
             var guid = User.Identity.Name;
-            var user = await _userService.GetAsync(Guid.Parse(guid));
-            List<TaskDTO> tasks = new List<TaskDTO>();
-            return View(user);
+            if (guid != null)
+            {
+                var user = await _userService.GetAsync(Guid.Parse(guid));
+                List<TaskDTO> tasks = new List<TaskDTO>();
+                return View(user);
+            }else
+                return RedirectToAction("UnAuthorized","Home");
         }
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(string id)
@@ -41,6 +47,23 @@ namespace Artur_Galas_ToDo_List.Controllers
         public async Task<IActionResult> Create()
         {
             return View();
+        }
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create(Add command)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+            //var guid = Guid.Parse(User.Identity.Name);
+            //await _userService.AddTaskAsync(guid, command.Title, command.Description, command.EndDate);
+            return View(command);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Done(Guid id)
+        {
+            _taskService.DoneTaskAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }

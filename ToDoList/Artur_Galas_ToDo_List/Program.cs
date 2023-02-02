@@ -22,10 +22,12 @@ builder.Services.AddDbContext<DbContext, ContextDb>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITasksRepository, TaskRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddSingleton(AutoMapperConfig.Initialize());
 builder.Services.AddSingleton<IJwtHandler, JwtHanlder>();
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddSession();
+builder.Services.AddRazorPages();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddAuthentication(options =>
     {
@@ -66,6 +68,7 @@ app.UseStatusCodePages(async context =>
             response.StatusCode == (int)HttpStatusCode.Forbidden)
         response.Redirect("/Home/Unauthorized");
 });
+app.MapRazorPages();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

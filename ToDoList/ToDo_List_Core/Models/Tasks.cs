@@ -24,7 +24,7 @@ namespace ToDo_List_Core.Models
         public DateTime CreateDate { get; protected set; }
         public DateTime UpdateDate { get; protected set; }
         public DateTime EndDate { get; protected set; }
-        public TaskState State { get; protected set; }
+        public TaskState State { get; set; }
         #endregion
         #region Constructors
         protected Tasks()

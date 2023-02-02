@@ -17,6 +17,11 @@ body {
     margin-bottom: 60px;
     background-color: #4f99a8;
 }
+textarea{
+    resize: none;
+    min-width:100px;
+    max-height:490px;
+}
 .UserRegister{
     margin: 30px auto;
     text-align: center;
@@ -42,7 +47,7 @@ body {
 .BoxLbl{
     text-align: center;
     width: 500px;
-    height: 100px;
+    height: 100px auto;
     justify-content: center;
     display:inline-grid;
 }
