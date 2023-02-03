@@ -1,36 +1,38 @@
 ﻿@model ToDo_List_Infrastructure.Commands.Task.Add;
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 @{
-    ViewData["Title"]="Dodawanie zadania";   
-    @using (Html.BeginForm("Create", "Task", FormMethod.Post)){
-    <div class="UserRegister">
-    <div class="BoxLbl">
+    ViewData["Title"] = "Dodawanie zadania";
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+}
+@{
+    @using (Html.BeginForm("Create", "Task", FormMethod.Post))
+    {
+        <div class="UserRegister">
+            <div class="BoxLbl">
         <label>Tytuł zadania</label>
         <input type="text" asp-for="Title" id="TitleBox"/>
-        <span asp-validation-for="Title"></span>
+                <span asp-validation-for="Title" id="Error"></span>
     </div>
     <div class="BoxLbl">
         <label>Opis zadania</label>
         <textarea asp-for="Description" id="DescriptionBox" maxlength="400"></textarea>
-                <span asp-validation-for="Description"></span>
+                <span asp-validation-for="Description" id="Error"></span>
     </div>   
     <div class="BoxLbl">
     <label>Data zakończenia zadania</label>
     <input type="date" asp-for="EndDate" id="DateBox"/>
-                <span asp-validation-for="EndDate"></span>
+                <span asp-validation-for="EndDate" id="Error">@Html.Raw(ViewBag.Error)</span>
     </div>
     <div class="UserBtn">
             <input type="submit" id="btn" value="Stwórz zadanie"/>
     </div>
      </div>
     }
-    
-    <script type="text/javascript">
+}
+<script type="text/javascript">
     textarea = document.querySelector("#DescriptionBox");
-    textarea.addEventListener('input', autoResize, false);          
+    textarea.addEventListener('input', autoResize, false);
     function autoResize() {
         this.style.height = 'auto';
         this.style.height = this.scrollHeight + 'px';
     }
-    </script>
-}
+</script>

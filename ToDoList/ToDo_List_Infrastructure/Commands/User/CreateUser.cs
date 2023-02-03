@@ -9,10 +9,6 @@ namespace ToDo_List_Infrastructure.Commands
 {
     public class CreateUser
     {
-        public CreateUser()
-        {
-
-        }
         public string Name { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }

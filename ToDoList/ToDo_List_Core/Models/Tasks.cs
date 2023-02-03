@@ -27,10 +27,6 @@ namespace ToDo_List_Core.Models
         public TaskState State { get; set; }
         #endregion
         #region Constructors
-        protected Tasks()
-        {
-        }
-
         public Tasks(Guid userid, string title, string description,DateTime enddate):base()
         {
             UserID = userid;
@@ -39,6 +35,32 @@ namespace ToDo_List_Core.Models
             EndDate = enddate;
             CreateDate = DateTime.UtcNow;
             UpdateDate = DateTime.UtcNow;           
+        }
+        #endregion
+        #region Methods
+        public void SetTitle(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+                throw new Exception("Tytuł nie może być pusty");
+            Title = title;
+        }
+        public void SetDescription(string description)
+        {
+            if (string.IsNullOrEmpty(description)) 
+                throw new Exception("Opis nie może być pusty");
+            Description= description;
+        }
+        public void SetEndDate(DateTime enddate)
+        {
+            if (enddate < DateTime.MinValue)
+                throw new Exception("Błędna data");
+            EndDate = enddate;
+        }
+        public void SetUpdateDate(DateTime enddate)
+        {
+            if (enddate < DateTime.MinValue)
+                throw new Exception("Błędna data");
+            EndDate = enddate;
         }
         #endregion
     }

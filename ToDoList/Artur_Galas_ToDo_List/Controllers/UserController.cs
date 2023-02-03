@@ -18,7 +18,8 @@ namespace Artur_Galas_ToDo_List.Controllers
         {
             _userService = userService;
         }
-        [HttpGet("/User")]
+        [Route("/")]
+        [HttpGet("Index")]
         public async Task<ActionResult> Index()
         {
             try
@@ -35,7 +36,7 @@ namespace Artur_Galas_ToDo_List.Controllers
             }
             return View(null);
         }
-        [HttpPost("/User/Register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register(CreateUser command)
         {
             try
@@ -51,17 +52,17 @@ namespace Artur_Galas_ToDo_List.Controllers
             }
             
         }
-        [HttpGet("/User/Register")]
+        [HttpGet("Register")]
         public async Task<IActionResult> Register()
         {
             return View();
         }
-        [HttpGet("/User/Login")]
+        [HttpGet("Login")]
         public async Task<IActionResult> Login()
         {
             return View();
         }
-        [HttpPost("/User/Login")]
+        [HttpPost("Login")]
         public async Task<ActionResult> Login(Login command)
         {
             try
@@ -75,7 +76,7 @@ namespace Artur_Galas_ToDo_List.Controllers
                 return View();
             }
         }
-        [HttpGet("User/LogOut")]
+        [HttpGet("LogOut")]
         public async Task<IActionResult> Logout()
         {
             HttpContext.Response.Cookies.Delete("Bearer");

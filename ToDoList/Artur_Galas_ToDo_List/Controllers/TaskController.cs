@@ -1,24 +1,28 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using ToDo_List_Infrastructure.Commands.Task;
 using ToDo_List_Infrastructure.DTO;
 using ToDo_List_Infrastructure.Services;
 
 namespace Artur_Galas_ToDo_List.Controllers
 {
-    [Route("[controller]")]
-    //[Authorize]
+
+    [Authorize]
     public class TaskController : ApiControllerBase
     {
         private readonly IUserService _userService;
         private readonly ITaskService _taskService;
-        private readonly UserDTO _user;
+        private readonly IMapper _mapper;
         
-        public TaskController(IUserService userservice,ITaskService taskService)
+        public TaskController(IUserService userservice,ITaskService taskService,IMapper mapper)
         {
             _taskService = taskService;
             _userService = userservice;
+            _mapper = mapper;
         }
         [HttpGet("Index")]
         public async Task<IActionResult> Index() 
@@ -32,38 +36,48 @@ namespace Artur_Galas_ToDo_List.Controllers
             }else
                 return RedirectToAction("UnAuthorized","Home");
         }
-        [HttpGet("Details/{id}")]
-        public async Task<IActionResult> Details(string id)
-        {
-            TaskDetailsDTO ts = new TaskDetailsDTO() {
-                Title = id,
-                Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                EndDate = DateTime.UtcNow,
-                state = ToDo_List_Core.Models.TaskState.Active,
-            };
-            return View(ts);
-        }
         [HttpGet("Create")]
         public async Task<IActionResult> Create()
         {
             return View();
         }
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var guid = User.Identity.Name;
+            if (guid != null)
+            {
+                var user = await _userService.GetAsync(Guid.Parse(guid));
+                var @task =_mapper.Map<TaskDetailsDTO>(user.tasks.FirstOrDefault(t=>t.id == id));
+                if (@task != null)
+                    return View(task);
+            }
+            return RedirectToAction("Index","Task");
+        }
+        [HttpGet("Done")]
+        public async Task<IActionResult> Done(Guid id)
+        {
+            await _taskService.DoneTaskAsync(id);
+            return RedirectToAction("Index");
+        }
+        [HttpGet("Delete")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _taskService.DeleteTaskAsync(id);
+            return RedirectToAction("Index");
+        }
         [HttpPost("Create")]
         public async Task<IActionResult> Create(Add command)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && command.EndDate>DateOnly.FromDateTime(DateTime.UtcNow))
             {
                 return RedirectToAction("Index");
             }
             //var guid = Guid.Parse(User.Identity.Name);
             //await _userService.AddTaskAsync(guid, command.Title, command.Description, command.EndDate);
+            ViewBag.Error = "Data zakończenia nie może być mniejsza niż dzisiejsza.";
             return View(command);
         }
-        [HttpGet]
-        public async Task<IActionResult> Done(Guid id)
-        {
-            _taskService.DoneTaskAsync(id);
-            return RedirectToAction("Index");
-        }
+        
     }
 }

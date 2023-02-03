@@ -27,12 +27,10 @@ namespace ToDo_List_Infrastructure.Repositories
         public async Task<Tasks> GetAsync(Guid id)
         => await Task.FromResult(_DbContext.tasks.FirstOrDefault(t => t.id == id));
 
-        public async Task UpdateState(Guid id, TaskState state)
+        public async Task UpdateTask(Guid id, Tasks task)
         {
             var uTask = this.GetAsync(id).Result;
-            if (uTask == null)
-                throw new Exception("Brak zadania");
-            uTask.State= state;
+            uTask = task;
             if ((await _DbContext.SaveChangesAsync()) > 0)
                 await Task.CompletedTask;
             else

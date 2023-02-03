@@ -17,18 +17,37 @@ namespace ToDo_List_Infrastructure.Services
         }
         public async Task DeleteTaskAsync(Guid id)
         {
-            await _tasksRepository.UpdateState(id, TaskState.Remove);
+            var @task = await _tasksRepository.GetAsync(id);
+            task.State = TaskState.Remove;
+            await _tasksRepository.UpdateTask(id, task);
             await Task.CompletedTask;
+            task.SetUpdateDate(DateTime.Now);
         }
 
         public async Task DoneTaskAsync(Guid id)
         {
-            await _tasksRepository.UpdateState(id, TaskState.Done);
+            var @task = await _tasksRepository.GetAsync(id);
+            task.State = TaskState.Done;
+            await _tasksRepository.UpdateTask(id, task);
             await Task.CompletedTask;
+            task.SetUpdateDate(DateTime.Now);
         }
-        public async Task ClosedTaskAsync (Guid id)
+        public async Task ClosedTaskAsync(Guid id)
         {
-            await _tasksRepository.UpdateState(id, TaskState.Closed);
+            var @task = await _tasksRepository.GetAsync(id);
+            task.State = TaskState.Closed;
+            await _tasksRepository.UpdateTask(id, task);
+            await Task.CompletedTask;
+            task.SetUpdateDate(DateTime.Now);
+        }
+        public async Task UpdateTaskAsync(Guid id,string Title,string Description,DateOnly EndDate)
+        {
+            var @task = await _tasksRepository.GetAsync(id);
+            task.SetTitle(Title);
+            task.SetDescription(Description);
+            task.SetEndDate(task.EndDate);
+            task.SetUpdateDate(DateTime.Now);
+            await _tasksRepository.UpdateTask(id, task);
             await Task.CompletedTask;
         }
     }

@@ -11,6 +11,6 @@ namespace ToDo_List_Core.Repositories
     {
         public Task<IEnumerable<Tasks>> GetAllAsync();
         public Task<Tasks> GetAsync(Guid id);
-        public Task UpdateState(Guid id,TaskState state);
+        public Task UpdateTask(Guid id, Tasks task);
     }
 }

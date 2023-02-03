@@ -22,6 +22,7 @@ namespace ToDo_List_Infrastructure.Mappers
                 .ForMember(p => p.role, m => m.MapFrom(p => p.role));
                 cfg.CreateMap<Tasks, TaskDetailsDTO>();
                 cfg.CreateMap<Task, TaskDTO>();
+                cfg.CreateMap<TaskDTO, TaskDetailsDTO>();
             }).CreateMapper(); 
     }
 }

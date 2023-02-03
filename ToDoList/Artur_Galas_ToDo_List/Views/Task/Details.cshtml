@@ -6,11 +6,15 @@
     <link rel="stylesheet" href="~/css/Task.css" asp-append-version="true" />
 </header>
 <div class="TaskDetails">
-<p>Tytuł: @Model.Title</p>
-<br />
-<br />
-<p> Staus: @Model.state.ToString() Data Zakończenia @Model.EndDate.ToString("d")</p>
-<br />
-<br />
-<p>Opis: @Model.Description</p>
+    <p>Tytuł: @Model.Title</p>
+    <br />
+    <br />
+    <p> Staus: @Model.state.ToString() Data Zakończenia @Model.EndDate.ToString("d")</p>
+    <br />
+    <br />
+    <p id="DecsriptionTxt">Opis: @Model.Description</p>
+    <div id="BtnBox">
+        <input type="submit" asp-action="Done" id="DoneBtn" value="Zakończ zadanie"/>
+        <input type="submit" asp-action="Delete" id="DeleteBtn" value="Usuń zadanie" />
+    </div>
 </div>

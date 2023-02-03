@@ -17,7 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddMvc();
+builder.Services.AddMvc().AddRazorPagesOptions(options =>
+{
+    options.Conventions.AddPageRoute("/User/Index", "");
+});
 builder.Services.AddDbContext<DbContext, ContextDb>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITasksRepository, TaskRepository>();
@@ -57,6 +60,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/User");
+    app.UseExceptionHandler("/Task");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -66,7 +70,7 @@ app.UseStatusCodePages(async context =>
 
     if (response.StatusCode == (int)HttpStatusCode.Unauthorized ||
             response.StatusCode == (int)HttpStatusCode.Forbidden)
-        response.Redirect("/Home/Unauthorized");
+        response.Redirect("/Unauthorized");
 });
 app.MapRazorPages();
 app.UseHttpsRedirection();
@@ -76,5 +80,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=User}/{action=Index}/{id?}");
+    pattern: "{controller=User}/{action=Index}");
 app.Run();
