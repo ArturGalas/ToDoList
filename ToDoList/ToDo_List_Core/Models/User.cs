@@ -30,7 +30,7 @@ namespace ToDo_List_Core.Models
         public UserState state { get; protected set; }
         public Role role { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
-        public IEnumerable<Tasks> tasks => _tasks;
+        public IEnumerable<Tasks> tasks => _tasks.Where(t=>t.State == TaskState.Active);
         #endregion
         #region Constructors
         protected User()

@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="~/css/Task.css" asp-append-version="true" />
 </header>
 <div class="TaskDetails">
-    <p>Tytuł: @Model.Title</p>
-    <br />
-    <br />
-    <p> Staus: @Model.state.ToString() Data Zakończenia @Model.EndDate.ToString("d")</p>
-    <br />
-    <br />
-    <p id="DecsriptionTxt">Opis: @Model.Description</p>
+    <div class="DetailsTitleBox">
+        <p id="TitleDesc">Tytuł:</p>
+        <p id="TitleTxt"> @Model.Title</p>
+    </div>
+    <div class="DetailsDescBox">
+        <p id="TitleDesc">Opis:</p>
+        <p id="DecsriptionTxt">@Model.Description</p>  
+    </div>
+    <p id="DateTxt">Data Zakończenia @Model.EndDate.ToString("d")</p>
     <div id="BtnBox">
-        <input type="submit" asp-action="Done" id="DoneBtn" value="Zakończ zadanie"/>
-        <input type="submit" asp-action="Delete" id="DeleteBtn" value="Usuń zadanie" />
+        <a asp-controller="Task" asp-action="Done"><button id="DoneBtn">Zakończ zadanie</button></a>
+        <a asp-controller ="Task" asp-action="Edit"><button id="EditBtn">Edytuj zadanie</button></a>
+        <a asp-controller="Task" asp-action="Delete"><button id="DeleteBtn">Usuń zadanie</button></a>
+        <a asp-controller="Task" asp-action="Index"><button id="DetBackBtn">Powrót</button></a>
     </div>
 </div>

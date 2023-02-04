@@ -40,7 +40,7 @@ namespace ToDo_List_Infrastructure.Services
             await Task.CompletedTask;
             task.SetUpdateDate(DateTime.Now);
         }
-        public async Task UpdateTaskAsync(Guid id,string Title,string Description,DateOnly EndDate)
+        public async Task UpdateTaskAsync(Guid id,string Title,string Description,DateTime EndDate)
         {
             var @task = await _tasksRepository.GetAsync(id);
             task.SetTitle(Title);

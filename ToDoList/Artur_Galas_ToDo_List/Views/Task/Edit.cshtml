@@ -1,0 +1,32 @@
+﻿@model ToDo_List_Infrastructure.Commands.Task.Edit;
+@{
+    <link rel="stylesheet" href="~/css/Task.css" asp-append-version="true"/>
+    ViewData["Title"] = "Edycja zadania"+Model.Title;
+    @Html.BeginForm("Edit","Task",FormMethod.Post){
+        <div class="EditBox">
+            <div class="EditTitle">
+                <input type="text" value="@Model.Title" asp-for=@Model.Title/>
+            </div>
+            <div class="EditDescription">
+                <textarea asp-for=@Model.Description id="EditDescription">
+                    @Model.Description
+                </textarea>
+            </div>
+            <div class="EditEndDate">
+                <input type="date" value=@Model.EndDate asp-for=@Model.EndDate/>
+            </div>
+            <div class="EditBtnBox">
+                <input type="submit" value="Zapisz zmiany" id="SubBtn"/>
+                <input type="button" value="Cofnij zmiany" asp-controller="Task" asp-action="Index" id="BackBtn"/>
+            </div>
+        </div>
+    }
+}
+<script type="text/javascript">
+    textarea = document.querySelector("#EditDescription");
+    textarea.addEventListener('input', autoResize, false);
+    function autoResize() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    }
+</script>

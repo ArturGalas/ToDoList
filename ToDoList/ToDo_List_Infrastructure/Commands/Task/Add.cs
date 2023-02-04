@@ -20,6 +20,6 @@ namespace ToDo_List_Infrastructure.Commands.Task
         [DisplayName("Opis")]
         public string Description { get; set; }
         [Required]
-        public DateOnly EndDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

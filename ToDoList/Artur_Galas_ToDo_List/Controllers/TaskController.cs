@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Threading.Tasks;
 using ToDo_List_Infrastructure.Commands.Task;
 using ToDo_List_Infrastructure.DTO;
 using ToDo_List_Infrastructure.Services;
@@ -11,7 +12,7 @@ using ToDo_List_Infrastructure.Services;
 namespace Artur_Galas_ToDo_List.Controllers
 {
 
-    [Authorize]
+    //[Authorize]
     public class TaskController : ApiControllerBase
     {
         private readonly IUserService _userService;
@@ -31,7 +32,6 @@ namespace Artur_Galas_ToDo_List.Controllers
             if (guid != null)
             {
                 var user = await _userService.GetAsync(Guid.Parse(guid));
-                List<TaskDTO> tasks = new List<TaskDTO>();
                 return View(user);
             }else
                 return RedirectToAction("UnAuthorized","Home");
@@ -48,11 +48,11 @@ namespace Artur_Galas_ToDo_List.Controllers
             if (guid != null)
             {
                 var user = await _userService.GetAsync(Guid.Parse(guid));
-                var @task =_mapper.Map<TaskDetailsDTO>(user.tasks.FirstOrDefault(t=>t.id == id));
+                var @task = _mapper.Map<TaskDetailsDTO>(user.tasks.FirstOrDefault(t => t.id == id));
                 if (@task != null)
                     return View(task);
             }
-            return RedirectToAction("Index","Task");
+            return RedirectToAction("Index", "Task");
         }
         [HttpGet("Done")]
         public async Task<IActionResult> Done(Guid id)
@@ -66,15 +66,34 @@ namespace Artur_Galas_ToDo_List.Controllers
             await _taskService.DeleteTaskAsync(id);
             return RedirectToAction("Index");
         }
+        [HttpGet("Edit")]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var guid = User.Identity.Name;
+            if (guid != null)
+            {
+                var user = await _userService.GetAsync(Guid.Parse(guid));
+                var @task = _mapper.Map<TaskDetailsDTO>(user.tasks.FirstOrDefault(t => t.id == id));
+                if (@task != null)
+                    return View(task);
+            }
+            return RedirectToAction("Index", "Task");
+        }
+        [HttpPost("Edit")]
+        public async Task<IActionResult> Edit(Edit command)
+        {
+            await _taskService.UpdateTaskAsync(command.Id, command.Title, command.Description, command.EndDate);
+            return RedirectToAction("Details", "Task", command.Id);
+        }
         [HttpPost("Create")]
         public async Task<IActionResult> Create(Add command)
         {
-            if (ModelState.IsValid && command.EndDate>DateOnly.FromDateTime(DateTime.UtcNow))
+            if (ModelState.IsValid && command.EndDate>DateTime.UtcNow)
             {
+                var guid = Guid.Parse(User.Identity.Name);
+                await _userService.AddTaskAsync(guid, command.Title, command.Description, command.EndDate);
                 return RedirectToAction("Index");
-            }
-            //var guid = Guid.Parse(User.Identity.Name);
-            //await _userService.AddTaskAsync(guid, command.Title, command.Description, command.EndDate);
+            }           
             ViewBag.Error = "Data zakończenia nie może być mniejsza niż dzisiejsza.";
             return View(command);
         }

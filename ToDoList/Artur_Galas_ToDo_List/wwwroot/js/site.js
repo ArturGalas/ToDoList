@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 textarea = document.querySelector("#DescriptionBox");
+textarea = document.querySelector("#EditDescription")
 textarea.addEventListener('input', autoResize, false);
 
 function autoResize() {
