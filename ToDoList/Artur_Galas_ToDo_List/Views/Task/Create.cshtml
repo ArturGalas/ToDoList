@@ -30,13 +30,9 @@
                 <a asp-controller="Task" asp-action="Index"><button id="DetBackBtn">Powrót</button></a>
             </div>
      </div>
-    }
-    <script type="text/javascript">
-        textarea = document.querySelector("#DescriptionBox");
-        textarea.addEventListener('input', autoResize, false);
-        function autoResize() {
-            this.style.height = 'auto';
-            this.style.height = this.scrollHeight + 'px';
-        }
-    </script>
 }
+}
+<script type="text/javascript">
+    textarea = document.querySelector("#DescriptionBox");
+    textarea.addEventListener('input', autoResize, false);
+</script>

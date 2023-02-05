@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using ToDo_List_Core.Models;
 using ToDo_List_Infrastructure.Commands;
 using ToDo_List_Infrastructure.Commands.User;
+using ToDo_List_Infrastructure.DTO;
 using ToDo_List_Infrastructure.Services;
 
 namespace Artur_Galas_ToDo_List.Controllers
@@ -36,30 +38,36 @@ namespace Artur_Galas_ToDo_List.Controllers
             }
             return View(null);
         }
-        [HttpPost("Register")]
-        public async Task<IActionResult> Register(CreateUser command)
+        [HttpGet("Login")]
+        public async Task<IActionResult> Login()
         {
-            try
-            {
-                var id = await Task.FromResult(_userService.CreateAsync(command.Email, command.Password, command.Name, command.role = Role.Admin).Result);
-                return RedirectToAction(actionName: "Login");
-            }
-            catch(Exception ex)
-            {
-                if(ex.Message.Contains("already exist"))
-                    ViewBag.Error = "Taki użytkownik już istnieje";
-                return View();
-            }
-            
+            return View();
         }
         [HttpGet("Register")]
         public async Task<IActionResult> Register()
         {
             return View();
         }
-        [HttpGet("Login")]
-        public async Task<IActionResult> Login()
+        //[Authorize]
+        [HttpGet("Details")]
+        public async Task<IActionResult> Details(Guid id)
         {
+            //var guid =Guid.Parse(User.Identity.Name);
+            //var @user = await _userService.GetAccountAsync(guid);
+            var @user = new Details()
+            {
+                name="Nazwa użytkownika",
+                email = "test@test.pl",
+                password = "tak",
+                id = Guid.NewGuid(),
+                Role = Role.User
+            };
+            return View(user);
+        }
+        [HttpGet("LogOut")]
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Response.Cookies.Delete("Bearer");
             return View();
         }
         [HttpPost("Login")]
@@ -70,17 +78,35 @@ namespace Artur_Galas_ToDo_List.Controllers
                 var token = await _userService.LoginAsync(command.username, command.password);
                 Response.Cookies.Append("Bearer", token.Token, new CookieOptions { HttpOnly = true });
                 return RedirectToAction(actionName: "Index");
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 ViewBag.Error = "Błędne dane logowania";
                 return View();
             }
         }
-        [HttpGet("LogOut")]
-        public async Task<IActionResult> Logout()
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(CreateUser command)
         {
-            HttpContext.Response.Cookies.Delete("Bearer");
-            return View();
+            try
+            {
+                var id = await Task.FromResult(_userService.CreateAsync(command.Email, command.Password, command.Name, Role.User).Result);
+                return RedirectToAction(actionName: "Login");
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("already exist"))
+                    ViewBag.Error = "Taki użytkownik już istnieje";
+                ViewBag.Error = ex.Message;
+                return View();
+            }
+
+        }
+        [Authorize]
+        [HttpPost("Details")]
+        public async Task<IActionResult> Details(AccountDTO command)
+        {
+            return RedirectToAction(actionName: "Index");
         }
     }
 }

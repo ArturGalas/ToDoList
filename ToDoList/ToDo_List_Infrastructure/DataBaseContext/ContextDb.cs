@@ -19,7 +19,7 @@ namespace ToDo_List_Infrastructure.DataBaseContext
             modelBuilder.Entity<Tasks>()
                 .HasKey(ts => ts.id);
             modelBuilder.Entity<User>()
-                .HasKey(us =>us.id);
+                .HasKey(us => us.id);
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Tasks> tasks { get; set; }

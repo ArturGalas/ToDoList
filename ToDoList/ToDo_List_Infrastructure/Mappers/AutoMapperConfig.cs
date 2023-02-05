@@ -23,6 +23,7 @@ namespace ToDo_List_Infrastructure.Mappers
                 cfg.CreateMap<Tasks, TaskDetailsDTO>();
                 cfg.CreateMap<Task, TaskDTO>();
                 cfg.CreateMap<TaskDTO, TaskDetailsDTO>();
+                cfg.Crea
             }).CreateMapper(); 
     }
 }

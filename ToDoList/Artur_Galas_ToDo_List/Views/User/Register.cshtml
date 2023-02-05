@@ -1,4 +1,4 @@
-﻿@model ToDo_List_Infrastructure.Commands.CreateUser
+﻿@model ToDo_List_Infrastructure.Commands.User.CreateUser
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,18 +15,17 @@
     <div class="BoxLbl">
         <label>Nazwa użytkownika</label>
         <input type="text" asp-for="@Model.Name" id="UserBox"/>
+        
     </div>
     <div class="BoxLbl">
         <label>Email</label>
         <input type="email" asp-for="@Model.Email" id="UserBox"/>
+        <span asp-validation-for="Email" id="Error"></span>
     </div>
     <div class="BoxLbl">
         <label>Hasło</label>
         <input type="password" asp-for="@Model.Password" id="UserBox"/>
-    </div>
-    <div class="BoxLbl">
-        <list>Rola</list>
-        <select asp-for="@Model.role" asp-items="Html.GetEnumSelectList<ToDo_List_Core.Models.Role>()"></select>
+            <span asp-validation-for="Password" id="Error"></span>
     </div>
     <div class="UserBtn">
             <input type="submit" id="btn" value="Zapisz"/>
