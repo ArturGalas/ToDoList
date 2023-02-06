@@ -125,11 +125,12 @@ textarea{
 }
 /*User Details region*/
 .DetailsBox{
+    border-radius: 20px;
     font-family:'Times New Roman';
     text-align: center;
     justify-content: center;
     width: 500px;
-    height: 1000px;
+    height: 825px;
     background-color: dimgray;
     color: white;
 }
@@ -202,4 +203,39 @@ textarea{
 #DescUser {
     font-size:27px;
     font-weight:500;
+}
+#TextinBox {
+    width: 99%;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+}
+#SaveBtn {
+    border-radius: 20px;
+    font-weight: bold;
+    width: 99%;
+    background-color: darkblue;
+    color: white;
+    height: 70px;
+}
+#SaveBtn:hover {
+    background-color: white;
+    color: darkblue;
+}
+#BackDiv {
+    display:inline-block;
+    justify-content:center;
+    border:solid 2px silver;
+    font-weight: bold;
+    width: 99%;
+    background-color: gray;
+    color: white;
+    height: 70px;
+    border-radius: 20px;
+    text-align: center;
+}
+#BackDiv:hover {
+    background-color: white;
+    color: gray;
 }

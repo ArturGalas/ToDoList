@@ -3,9 +3,12 @@
     "",
     "\\ToDoList",
     "\\ToDoList\\Artur_Galas_ToDo_List",
+    "\\ToDoList\\Artur_Galas_ToDo_List\\Controllers",
     "\\ToDoList\\Artur_Galas_ToDo_List\\Views",
-    "\\ToDoList\\Artur_Galas_ToDo_List\\Views\\Task"
+    "\\ToDoList\\Artur_Galas_ToDo_List\\Views\\Task",
+    "\\ToDoList\\Artur_Galas_ToDo_List\\wwwroot",
+    "\\ToDoList\\Artur_Galas_ToDo_List\\wwwroot\\css"
   ],
-  "SelectedNode": "\\ToDoList\\Artur_Galas_ToDo_List\\Artur_Galas_ToDo_List.sln",
+  "SelectedNode": "\\ToDoList\\Artur_Galas_ToDo_List\\Controllers\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }

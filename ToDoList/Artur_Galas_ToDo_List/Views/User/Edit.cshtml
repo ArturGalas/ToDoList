@@ -1,0 +1,31 @@
+﻿@model ToDo_List_Infrastructure.Commands.User.Details;
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@{
+    ViewData["Title"] = "Edycja użytkownika";
+    @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+    {
+        <div class="DetailsBox">
+            <div id="PasswordBox">
+                <label id="DescUser">Nazwa użytkownika:</label>
+                <input type="text" value="@Model.name" id="TextinBox" asp-for="@Model.name" />
+            </div>
+            <div id="PasswordBox">
+                <label id="DescUser">Email:</label>
+                <input type="text" value="@Model.email" id="TextinBox" asp-for="@Model.email"/>
+            </div>
+            <div id="PasswordBox">
+                <label id="DescUser">Hasło:</label>
+                <input type="password" asp-for="@Model.password" value="@Model.password" id="PasswordTxt"/>
+            </div>
+            <div id="RoleBox">
+                <label id="DescUser">Rola:</label>
+                <p id="UserTxt">@Model.Role</p>
+            </div>
+            <div class="AccontBtnBox">
+                <input type="submit" value="Zapisz zmiany" id="SaveBtn" />
+                <input type="button" id="ShowPassword" value="Pokaż hasło" onclick="Show()"/>
+                <a asp-action="Details" action="Get" asp-controller="User"><div id="BackDiv">Powrót</div></a>
+        </div>
+        </div>  
+    }
+}

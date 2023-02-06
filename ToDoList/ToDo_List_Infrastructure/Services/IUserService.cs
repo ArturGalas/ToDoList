@@ -16,7 +16,7 @@ namespace ToDo_List_Infrastructure.Services
         public Task<TokenDTO> CreateAsync(string email,string password,string name,Role role);
         public Task<Guid> AddTaskAsync(Guid id, string title, string description, DateTime enddate);
         public Task DeleteAsync(Guid id);
-        public Task UpdateAsync(Guid id,string? name, string? email);
+        public Task UpdateAsync(Guid id,string? name, string? email,string? password);
         public Task<TokenDTO> LoginAsync(string username,string password);
         public Task<AccountDTO> GetAccountAsync(Guid id);
     }

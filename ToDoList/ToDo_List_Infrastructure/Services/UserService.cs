@@ -69,14 +69,14 @@ namespace ToDo_List_Infrastructure.Services
             return Task.CompletedTask;            
         }
 
-        public Task UpdateAsync(Guid id, string? name, string? email)
+        public Task UpdateAsync(Guid id, string? name, string? email,string? password)
         {
             var @user = _userRepository.GetOrFail(id).Result;
             if (@user == null) 
             {
                 throw new Exception($"User not exists");
             }
-            user.UpdateUser(name, email);
+            user.UpdateUser(name, email, password);
             _userRepository.UpdateAsync();
             return Task.CompletedTask;
         }

@@ -9,11 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Artur_Galas_ToDo_List
 build_property.RootNamespace = Artur_Galas_ToDo_List
-build_property.ProjectDir = C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\Artur_Galas_ToDo_List\
+build_property.ProjectDir = C:\Users\PC\source\repos\ArturGalas\ToDoList\ToDoList\Artur_Galas_ToDo_List\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\PC\Source\Repos\ArturGalas\ToDoList\ToDoList\Artur_Galas_ToDo_List
+build_property.MSBuildProjectDirectory = C:\Users\PC\source\repos\ArturGalas\ToDoList\ToDoList\Artur_Galas_ToDo_List
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/PC/source/repos/ArturGalas/ToDoList/ToDoList/Artur_Galas_ToDo_List/Views/Home/Index.cshtml]
@@ -50,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/PC/source/repos/ArturGalas/ToDoList/ToDoList/Artur_Galas_ToDo_List/Views/User/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PC/source/repos/ArturGalas/ToDoList/ToDoList/Artur_Galas_ToDo_List/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PC/source/repos/ArturGalas/ToDoList/ToDoList/Artur_Galas_ToDo_List/Views/User/Index.cshtml]

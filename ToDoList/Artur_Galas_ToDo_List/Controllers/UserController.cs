@@ -27,16 +27,12 @@ namespace Artur_Galas_ToDo_List.Controllers
             try
             {
                 var @user = _userService.GetAccountAsync(UserId).Result;
-                if (UserId != Guid.Empty)
-                {
-                    return View(user);
-                }
+                return View(user);
             }
             catch
             {
                 return View(null);
             }
-            return View(null);
         }
         [HttpGet("Login")]
         public async Task<IActionResult> Login()
@@ -50,7 +46,7 @@ namespace Artur_Galas_ToDo_List.Controllers
         }
         //[Authorize]
         [HttpGet("Details")]
-        public async Task<IActionResult> Details(Guid id)
+        public async Task<IActionResult> Details()
         {
             //var guid =Guid.Parse(User.Identity.Name);
             //var @user = await _userService.GetAccountAsync(guid);
@@ -64,12 +60,28 @@ namespace Artur_Galas_ToDo_List.Controllers
             };
             return View(user);
         }
+        [HttpGet("Edit")]
+        public async Task<IActionResult> Edit()
+        {
+            //var guid =Guid.Parse(User.Identity.Name);
+            //var @user = await _userService.GetAccountAsync(guid);
+            var @user = new Details()
+            {
+                name = "Nazwa użytkownika",
+                email = "test@test.pl",
+                password = "tak",
+                id = Guid.NewGuid(),
+                Role = Role.User
+            };
+            return View(user);
+        }
         [HttpGet("LogOut")]
         public async Task<IActionResult> Logout()
         {
             HttpContext.Response.Cookies.Delete("Bearer");
             return View();
         }
+        
         [HttpPost("Login")]
         public async Task<ActionResult> Login(Login command)
         {
@@ -91,7 +103,9 @@ namespace Artur_Galas_ToDo_List.Controllers
             try
             {
                 var id = await Task.FromResult(_userService.CreateAsync(command.Email, command.Password, command.Name, Role.User).Result);
-                return RedirectToAction(actionName: "Login");
+                var token = await _userService.LoginAsync(command.Email, command.Password);
+                Response.Cookies.Append("Bearer", token.Token, new CookieOptions { HttpOnly = true });
+                return RedirectToAction(actionName: "Index");
             }
             catch (Exception ex)
             {
@@ -103,10 +117,13 @@ namespace Artur_Galas_ToDo_List.Controllers
 
         }
         [Authorize]
-        [HttpPost("Details")]
-        public async Task<IActionResult> Details(AccountDTO command)
+        [HttpPost("Edit")]
+        public async Task<IActionResult> Edit(Details command)
         {
-            return RedirectToAction(actionName: "Index");
+            var guid =Guid.Parse(User.Identity.Name);
+            var @user = await _userService.GetAccountAsync(guid);
+            await _userService.UpdateAsync(guid, command.name, command.email,command.password);
+            return RedirectToAction(actionName: "Details");
         }
     }
 }

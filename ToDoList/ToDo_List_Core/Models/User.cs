@@ -56,12 +56,14 @@ namespace ToDo_List_Core.Models
         {
             state= UserState.Remove;
         }
-        public void UpdateUser(string? name,string? email)
+        public void UpdateUser(string? name,string? email,string? password)
         {
-            if(name == null)           
+            if(name != null)           
                 this.name = name;
-            if (email == null)
+            if (email != null)
                 this.email = email;
+            if(password != null)
+                this.password = password;
         }
         #endregion
     }
