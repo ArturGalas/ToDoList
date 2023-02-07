@@ -10,6 +10,7 @@ namespace ToDo_List_Infrastructure.DTO
 {
     public class TaskDetailsDTO
     {
+        public Guid Id { get; set; }
         [Range(0,400)]
         public string Description { get; set; }
         public string Title { get; set; }

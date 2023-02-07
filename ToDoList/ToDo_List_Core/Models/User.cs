@@ -23,7 +23,7 @@ namespace ToDo_List_Core.Models
     {
         #region Properties
 
-        private ISet<Tasks> _tasks = new HashSet<Tasks>();
+        private ISet<Tasks> _tasks;
         public string email { get; protected set; }
         public string password { get; protected set; }
         public string name { get; protected set; }
@@ -33,12 +33,9 @@ namespace ToDo_List_Core.Models
         public IEnumerable<Tasks> tasks => _tasks.Where(t=>t.State == TaskState.Active);
         #endregion
         #region Constructors
-        protected User()
-        {
-        }
-
         public User(string email, string password, string name, Role role):base()
         {
+            _tasks = new HashSet<Tasks>();
             this.email = email;
             this.password = password;
             this.name = name;

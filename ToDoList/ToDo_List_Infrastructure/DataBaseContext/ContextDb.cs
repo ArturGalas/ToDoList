@@ -17,9 +17,9 @@ namespace ToDo_List_Infrastructure.DataBaseContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Tasks>()
-                .HasKey(ts => ts.id);
+                .HasKey(ts => ts.Id);
             modelBuilder.Entity<User>()
-                .HasKey(us => us.id);
+                .HasKey(us => us.Id);
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Tasks> tasks { get; set; }

@@ -10,6 +10,7 @@ namespace ToDo_List_Infrastructure.Services
 {
     public interface IUserService
     {
+        public Task<User> GetUserAsync(Guid id);
         public Task<UserDTO> GetAsync(Guid id);
         public Task<UserDTO> GetAsync(string email);
         public Task<IEnumerable<UserDTO>> GetAllAsync();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
@@ -16,9 +17,11 @@ namespace Artur_Galas_ToDo_List.Controllers
     public class UserController : ApiControllerBase
     {
         private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        private readonly IMapper _mapper;
+        public UserController(IUserService userService,IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
         [Route("/")]
         [HttpGet("Index")]
@@ -44,35 +47,19 @@ namespace Artur_Galas_ToDo_List.Controllers
         {
             return View();
         }
-        //[Authorize]
+        [Authorize]
         [HttpGet("Details")]
         public async Task<IActionResult> Details()
         {
-            //var guid =Guid.Parse(User.Identity.Name);
-            //var @user = await _userService.GetAccountAsync(guid);
-            var @user = new Details()
-            {
-                name="Nazwa użytkownika",
-                email = "test@test.pl",
-                password = "tak",
-                id = Guid.NewGuid(),
-                Role = Role.User
-            };
+            var guid =Guid.Parse(User.Identity.Name);
+            var @user = _mapper.Map<Details>( await _userService.GetUserAsync(guid));
             return View(user);
         }
         [HttpGet("Edit")]
         public async Task<IActionResult> Edit()
         {
-            //var guid =Guid.Parse(User.Identity.Name);
-            //var @user = await _userService.GetAccountAsync(guid);
-            var @user = new Details()
-            {
-                name = "Nazwa użytkownika",
-                email = "test@test.pl",
-                password = "tak",
-                id = Guid.NewGuid(),
-                Role = Role.User
-            };
+            var guid =Guid.Parse(User.Identity.Name);
+            var @user = _mapper.Map<Details>(await _userService.GetAccountAsync(guid));
             return View(user);
         }
         [HttpGet("LogOut")]

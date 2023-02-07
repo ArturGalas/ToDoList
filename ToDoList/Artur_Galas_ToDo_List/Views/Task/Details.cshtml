@@ -16,9 +16,9 @@
     </div>
     <p id="DateTxt">Data Zakończenia @Model.EndDate.ToString("d")</p>
     <div id="BtnBox">
-        <a asp-controller="Task" asp-action="Done"><button id="DoneBtn">Zakończ zadanie</button></a>
-        <a asp-controller ="Task" asp-action="Edit"><button id="EditBtn">Edytuj zadanie</button></a>
-        <a asp-controller="Task" asp-action="Delete"><button id="DeleteBtn">Usuń zadanie</button></a>
-        <a asp-controller="Task" asp-action="Index"><button id="DetBackBtn">Powrót</button></a>
+        <a asp-controller="Task" asp-action="Done" asp-route-id="@Model.Id"><button id="DoneBtn">Zakończ zadanie</button></a>
+        <a asp-controller ="Task" asp-action="Edit" asp-route-id="@Model.Id"><button id="EditBtn">Edytuj zadanie</button></a>
+        <a asp-controller="Task" asp-action="Delete" asp-route-id="@Model.Id"><button id="DeleteBtn">Usuń zadanie</button></a>
+        <a asp-controller="Task" asp-action="Index" ><button id="DetBackBtn">Powrót</button></a>
     </div>
 </div>

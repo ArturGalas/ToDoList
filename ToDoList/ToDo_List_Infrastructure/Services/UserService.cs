@@ -22,6 +22,11 @@ namespace ToDo_List_Infrastructure.Services
             _mapper = mapper;
             _jwtHandler = jwtHandler;
         }
+        public async Task<User> GetUserAsync(Guid id)
+        {
+            var @user = await _userRepository.GetOrFail(id);
+            return @user;
+        }
         public async Task<UserDTO> GetAsync(Guid id)
         {
             var @user = await _userRepository.GetOrFail(id);
@@ -41,10 +46,9 @@ namespace ToDo_List_Infrastructure.Services
         }
         public Task<Guid> AddTaskAsync(Guid id,string title, string description, DateTime enddate)
         {
-            var user = _userRepository.GetOrFail(id);
             var newTask = new Tasks(id, title, description, enddate);
-            _userRepository.AddTaskAsync(user.Result, newTask);
-            return Task.FromResult(newTask.id);
+            _userRepository.AddTaskAsync(id, newTask);
+            return Task.FromResult(newTask.Id);
         }
         public async Task<TokenDTO> CreateAsync(string email, string password, string name, Role role)
         {
@@ -55,7 +59,7 @@ namespace ToDo_List_Infrastructure.Services
             }
             @user = new User(email, password, name, role);
             await _userRepository.CreateAsync(user);
-            var jwt = _jwtHandler.CreateToken(user.id, user.role);
+            var jwt = _jwtHandler.CreateToken(user.Id, user.role);
             return new TokenDTO
             {
                 Token = jwt.Token,
@@ -91,7 +95,7 @@ namespace ToDo_List_Infrastructure.Services
             {
                 throw new Exception("Invalid credentials");
             }
-            var jwt = _jwtHandler.CreateToken(user.id, user.role);
+            var jwt = _jwtHandler.CreateToken(user.Id, user.role);
             return new TokenDTO
             {
                 Token = jwt.Token,

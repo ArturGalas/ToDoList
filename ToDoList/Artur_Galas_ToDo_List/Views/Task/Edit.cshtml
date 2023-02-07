@@ -2,22 +2,26 @@
 @{
     <link rel="stylesheet" href="~/css/Task.css" asp-append-version="true"/>
     ViewData["Title"] = "Edycja zadania"+Model.Title;
-    @Html.BeginForm("Edit","Task",FormMethod.Post){
+    @using(Html.BeginForm("Edit","Task",FormMethod.Post)){
         <div class="EditBox">
+            @Html.HiddenFor(m=>m.Id);
             <div class="EditTitle">
-                <input type="text" value="@Model.Title" asp-for=@Model.Title/>
+                <label>Tytuł zadania</label>
+                <input type="text" value=@Model.Title asp-for=@Model.Title id="EditTitle"/>
             </div>
             <div class="EditDescription">
-                <textarea asp-for=@Model.Description id="EditDescription">
+                <label>Opis zadania</label>
+                <textarea asp-for=@Model.Description id="EditDescription" style="width:99%">
                     @Model.Description
                 </textarea>
             </div>
             <div class="EditEndDate">
-                <input type="date" value=@Model.EndDate asp-for=@Model.EndDate/>
+                <label>Data końca zadania</label><br>
+                <input type="date" value=@Model.EndDate.ToString("yyyy-MM-dd") asp-for=@Model.EndDate/>
             </div>
             <div class="EditBtnBox">
                 <input type="submit" value="Zapisz zmiany" id="SubBtn"/>
-                <input type="button" value="Cofnij zmiany" asp-controller="Task" asp-action="Index" id="BackBtn"/>
+                <a asp-action="Details" asp-asp-controller="Task" asp-route-id="@Model.Id"><div id="BackBtn">Powrót</div></a>
             </div>
         </div>
     }

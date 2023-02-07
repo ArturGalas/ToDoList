@@ -23,9 +23,11 @@ namespace ToDo_List_Infrastructure.Repositories
 
         public async Task<IEnumerable<Tasks>> GetAllAsync()
         => await Task.FromResult(_DbContext.tasks);
+        public async Task<IEnumerable<Tasks>> GetAllAsyncByUser(Guid userId)
+        => await Task.FromResult(_DbContext.tasks.Where(t=>t.UserID==userId).Where(s=>s.State==TaskState.Active));
 
         public async Task<Tasks> GetAsync(Guid id)
-        => await Task.FromResult(_DbContext.tasks.FirstOrDefault(t => t.id == id));
+        => await Task.FromResult(_DbContext.tasks.FirstOrDefault(t => t.Id == id));
 
         public async Task UpdateTask(Guid id, Tasks task)
         {

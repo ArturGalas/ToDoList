@@ -12,7 +12,7 @@ using ToDo_List_Infrastructure.Services;
 namespace Artur_Galas_ToDo_List.Controllers
 {
 
-    //[Authorize]
+    [Authorize]
     public class TaskController : ApiControllerBase
     {
         private readonly IUserService _userService;
@@ -32,6 +32,8 @@ namespace Artur_Galas_ToDo_List.Controllers
             if (guid != null)
             {
                 var user = await _userService.GetAsync(Guid.Parse(guid));
+                var tasks = await _taskService.GetTasks(Guid.Parse(guid));
+                user.tasks = _mapper.Map<IEnumerable<TaskDTO>>(tasks);
                 return View(user);
             }else
                 return RedirectToAction("UnAuthorized","Home");
@@ -41,14 +43,13 @@ namespace Artur_Galas_ToDo_List.Controllers
         {
             return View();
         }
-        [HttpGet("Details/{id}")]
+        [HttpGet("Details")]
         public async Task<IActionResult> Details(Guid id)
         {
             var guid = User.Identity.Name;
             if (guid != null)
             {
-                var user = await _userService.GetAsync(Guid.Parse(guid));
-                var @task = _mapper.Map<TaskDetailsDTO>(user.tasks.FirstOrDefault(t => t.id == id));
+                var @task = _mapper.Map<TaskDetailsDTO>(await _taskService.GetByIdAsync(id));
                 if (@task != null)
                     return View(task);
             }
@@ -69,21 +70,17 @@ namespace Artur_Galas_ToDo_List.Controllers
         [HttpGet("Edit")]
         public async Task<IActionResult> Edit(Guid id)
         {
-            var guid = User.Identity.Name;
-            if (guid != null)
-            {
-                var user = await _userService.GetAsync(Guid.Parse(guid));
-                var @task = _mapper.Map<TaskDetailsDTO>(user.tasks.FirstOrDefault(t => t.id == id));
-                if (@task != null)
-                    return View(task);
-            }
-            return RedirectToAction("Index", "Task");
+            var @task = _mapper.Map<Edit>(await _taskService.GetByIdAsync(id));
+            if (@task != null)
+                return View(task);
+            else
+                return RedirectToAction("Index", "Task");
         }
         [HttpPost("Edit")]
         public async Task<IActionResult> Edit(Edit command)
         {
             await _taskService.UpdateTaskAsync(command.Id, command.Title, command.Description, command.EndDate);
-            return RedirectToAction("Details", "Task", command.Id);
+            return RedirectToAction("Details", "Task", new { id = command.Id });
         }
         [HttpPost("Create")]
         public async Task<IActionResult> Create(Add command)

@@ -8,7 +8,7 @@ textarea.addEventListener('input', autoResize, false);
 
 function autoResize() {
     this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 'px';
+    this.style.height = (this.scrollHeight+5) + 'px';
 }
 function Show(str) {
 
@@ -26,7 +26,7 @@ function Show(str) {
         document.getElementById("ShowPassword").value = "Pokaż hasło"
     }
 }
-function Show() {
+function Unlock() {
 
     var type = document.getElementById("PasswordTxt").type;
     if (type == "password") {
