@@ -15,6 +15,6 @@ namespace ToDo_List_Core.Repositories
         Task CreateAsync(User user);
         Task UpdateAsync();
         Task DeleteAsync(Guid id);
-        Task AddTaskAsync(User user,Tasks newTask);
+        Task AddTaskAsync(Guid UserId,Tasks newTask);
     }
 }

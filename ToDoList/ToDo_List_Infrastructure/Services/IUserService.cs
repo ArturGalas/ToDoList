@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDo_List_Core.Models;
+using ToDo_List_Infrastructure.Commands.User;
 using ToDo_List_Infrastructure.DTO;
 
 namespace ToDo_List_Infrastructure.Services
 {
     public interface IUserService
     {
+        public Task<User> GetUserAsync(Guid id);
         public Task<UserDTO> GetAsync(Guid id);
         public Task<UserDTO> GetAsync(string email);
         public Task<IEnumerable<UserDTO>> GetAllAsync();
@@ -19,5 +21,6 @@ namespace ToDo_List_Infrastructure.Services
         public Task UpdateAsync(Guid id,string? name, string? email,string? password);
         public Task<TokenDTO> LoginAsync(string username,string password);
         public Task<AccountDTO> GetAccountAsync(Guid id);
+        public Task<Details> GetAccountDetailsAsync(Guid id);
     }
 }

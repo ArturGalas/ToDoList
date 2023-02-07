@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToDo_List_Core.Models;
 using ToDo_List_Core.Repositories;
+using ToDo_List_Infrastructure.Commands.User;
 using ToDo_List_Infrastructure.DTO;
 using ToDo_List_Infrastructure.Extensions;
+using ToDo_List_Infrastructure.Security;
 
 namespace ToDo_List_Infrastructure.Services
 {
@@ -21,6 +18,11 @@ namespace ToDo_List_Infrastructure.Services
             _userRepository = userRepository;
             _mapper = mapper;
             _jwtHandler = jwtHandler;
+        }
+        public async Task<User> GetUserAsync(Guid id)
+        {
+            var @user = await _userRepository.GetOrFail(id);
+            return @user;
         }
         public async Task<UserDTO> GetAsync(Guid id)
         {
@@ -41,10 +43,9 @@ namespace ToDo_List_Infrastructure.Services
         }
         public Task<Guid> AddTaskAsync(Guid id,string title, string description, DateTime enddate)
         {
-            var user = _userRepository.GetOrFail(id);
             var newTask = new Tasks(id, title, description, enddate);
-            _userRepository.AddTaskAsync(user.Result, newTask);
-            return Task.FromResult(newTask.id);
+            _userRepository.AddTaskAsync(id, newTask);
+            return Task.FromResult(newTask.Id);
         }
         public async Task<TokenDTO> CreateAsync(string email, string password, string name, Role role)
         {
@@ -53,9 +54,9 @@ namespace ToDo_List_Infrastructure.Services
             {
                 throw new Exception($"User with email: {email} already exists");
             }
-            @user = new User(email, password, name, role);
+            @user = new User(email,SecurityClass.HashPassword(password), name, role);
             await _userRepository.CreateAsync(user);
-            var jwt = _jwtHandler.CreateToken(user.id, user.role);
+            var jwt = _jwtHandler.CreateToken(user.Id, user.role);
             return new TokenDTO
             {
                 Token = jwt.Token,
@@ -76,7 +77,7 @@ namespace ToDo_List_Infrastructure.Services
             {
                 throw new Exception($"User not exists");
             }
-            user.UpdateUser(name, email, password);
+            user.UpdateUser(name, email, SecurityClass.HashPassword(password));
             _userRepository.UpdateAsync();
             return Task.CompletedTask;
         }
@@ -87,11 +88,11 @@ namespace ToDo_List_Infrastructure.Services
             {
                 throw new Exception("Invalid credentials");
             }
-            if (user.password != password)
+            if (!SecurityClass.ComparePassword(password,user.password))
             {
                 throw new Exception("Invalid credentials");
             }
-            var jwt = _jwtHandler.CreateToken(user.id, user.role);
+            var jwt = _jwtHandler.CreateToken(user.Id, user.role);
             return new TokenDTO
             {
                 Token = jwt.Token,
@@ -103,6 +104,11 @@ namespace ToDo_List_Infrastructure.Services
         {
             var @user = await _userRepository.GetOrFail(id);
             return _mapper.Map<AccountDTO>(@user);
+        }
+        public async Task<Details> GetAccountDetailsAsync(Guid id)
+        {
+            var @user = await _userRepository.GetOrFail(id);
+            return _mapper.Map<Details>(@user);
         }
     }
 }

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 @{
     ViewData["Title"] = "Edycja użytkownika";
-    @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+    @using(Html.BeginForm("Edit", "User", FormMethod.Post))
     {
         <div class="DetailsBox">
             <div id="PasswordBox">
@@ -15,7 +15,7 @@
             </div>
             <div id="PasswordBox">
                 <label id="DescUser">Hasło:</label>
-                <input type="password" asp-for="@Model.password" value="@Model.password" id="PasswordTxt"/>
+                <input type="password" asp-for="@Model.password" id="PasswordTxt"/>
             </div>
             <div id="RoleBox">
                 <label id="DescUser">Rola:</label>
@@ -23,7 +23,7 @@
             </div>
             <div class="AccontBtnBox">
                 <input type="submit" value="Zapisz zmiany" id="SaveBtn" />
-                <input type="button" id="ShowPassword" value="Pokaż hasło" onclick="Show()"/>
+                <input type="button" id="ShowPassword" value="Pokaż hasło" onclick="Unlock()"/>
                 <a asp-action="Details" action="Get" asp-controller="User"><div id="BackDiv">Powrót</div></a>
         </div>
         </div>  

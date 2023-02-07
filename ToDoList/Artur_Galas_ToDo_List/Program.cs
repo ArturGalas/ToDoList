@@ -21,7 +21,7 @@ builder.Services.AddMvc().AddRazorPagesOptions(options =>
 {
     options.Conventions.AddPageRoute("/User/Index", "");
 });
-builder.Services.AddDbContext<DbContext, ContextDb>();
+builder.Services.AddDbContext<ContextDb>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("Api")));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITasksRepository, TaskRepository>();
 builder.Services.AddScoped<IUserService, UserService>();

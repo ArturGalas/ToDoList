@@ -24,7 +24,7 @@ namespace ArturGalasToDoList.Migrations
 
             modelBuilder.Entity("ToDo_List_Core.Models.Tasks", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -36,7 +36,8 @@ namespace ArturGalasToDoList.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Data końcowa");
 
                     b.Property<int>("State")
                         .HasColumnType("int");
@@ -51,7 +52,7 @@ namespace ArturGalasToDoList.Migrations
                     b.Property<Guid>("UserID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserID");
 
@@ -60,7 +61,7 @@ namespace ArturGalasToDoList.Migrations
 
             modelBuilder.Entity("ToDo_List_Core.Models.User", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -85,7 +86,7 @@ namespace ArturGalasToDoList.Migrations
                     b.Property<int>("state")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });

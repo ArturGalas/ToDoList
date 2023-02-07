@@ -8,11 +8,11 @@ namespace ToDo_List_Core.Models
 {
     public abstract  class Entity
     {
-        public Guid id { get; }
+        public Guid Id { get; }
 
         protected Entity()
         {
-            id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
     }
 }

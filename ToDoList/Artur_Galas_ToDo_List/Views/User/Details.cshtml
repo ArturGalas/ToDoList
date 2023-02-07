@@ -1,6 +1,7 @@
 ﻿@model ToDo_List_Infrastructure.Commands.User.Details;
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 @{
+    
     ViewData["Title"] = "Szczegóły użytkownika";
     <div class="DetailsBox">
         <div id="WelcomBox">
@@ -10,17 +11,12 @@
             <label id="DescUser">Email:</label>
             <p id="UserTxt">@Model.email</p>
         </div>
-        <div id="PasswordBox">
-            <label id="DescUser">Hasło:</label>
-            <input type="password" readonly value="hasłohasłohasło" id="PasswordTxt"/>
-        </div>
         <div id="RoleBox">
             <label id="DescUser">Rola:</label>
             <p id="UserTxt">@Model.Role</p>
         </div>
         <div class="AccontBtnBox">
-            <a asp-action="Edit" asp-controller="User"><button id="EditBtn">Edytuj</button></a>
-            <input type="button" id="ShowPassword" value="Pokaż hasło" onclick="Show('@Model.password')"/>
+            <a asp-action="Edit" asp-controller="User" asp-route-id="@Model.id"><button id="EditBtn">Edytuj</button></a>
             <a asp-action="Index" asp-controller="User"><button id="BackBtn">Powrót</button></a>
         </div>
     </div>

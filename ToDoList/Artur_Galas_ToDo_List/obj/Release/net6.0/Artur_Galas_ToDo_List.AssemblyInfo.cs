@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b7361161-1f7b-43c3-82dc-83f8043d7951")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Artur_Galas_ToDo_List")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

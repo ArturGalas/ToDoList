@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,15 +19,18 @@ namespace ToDo_List_Core.Models
     public class Tasks : Entity
     {
         #region Properties
+        [ForeignKey(name:"UserId")]
         public Guid UserID { get; protected set; }
         public string Title { get; protected set; }
         public string Description { get; protected set; }
         public DateTime CreateDate { get; protected set; }
         public DateTime UpdateDate { get; protected set; }
+        [Column(name:"Data końcowa")]
         public DateTime EndDate { get; protected set; }
         public TaskState State { get; set; }
         #endregion
         #region Constructors
+        private Tasks() { }
         public Tasks(Guid userid, string title, string description,DateTime enddate):base()
         {
             UserID = userid;
@@ -56,11 +60,11 @@ namespace ToDo_List_Core.Models
                 throw new Exception("Błędna data");
             EndDate = enddate;
         }
-        public void SetUpdateDate(DateTime enddate)
+        public void SetUpdateDate(DateTime updateDate)
         {
-            if (enddate < DateTime.MinValue)
+            if (updateDate < DateTime.MinValue)
                 throw new Exception("Błędna data");
-            EndDate = enddate;
+            UpdateDate = updateDate;
         }
         #endregion
     }
