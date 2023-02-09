@@ -59,7 +59,11 @@ namespace Artur_Galas_ToDo_List.Controllers
         public async Task<IActionResult> Edit()
         {
             var guid =Guid.Parse(User.Identity.Name);
+<<<<<<< HEAD
             var @user = await _userService.GetAccountDetailsAsync(guid);
+=======
+            var @user = _mapper.Map<Details>(await _userService.GetAccountAsync(guid));
+>>>>>>> 84d0ec61f63c67d6cfdd2aba023283c9aba070ef
             return View(user);
         }
         [HttpGet("LogOut")]
